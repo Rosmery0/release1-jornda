@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Jornada</string>
+    <string name="seleccionarProvincia">Selecciona una provincia</string>
+    <string name="seleccionarMunicipio">Selecciona un Municipio</string>
+    <string name="DistritoMunicipal">Distrito municipal</string>
+    <string name="sector">Sector</string>
+    <string name="fecha">Fecha</string>
+    <string name="coordinador">Coordinador</string>
+    <string name="editor">Editor</string>
+    <string name="hogares">Hogares Visitados</string>
+    <string name="mujeres">Mujeres</string>
+    <string name="hombres">Hombres</string>
+    <string name="comerciales">Locales comerciales</string>
+    <string name="impactadas">Impactadas</string>
+    <string name="educativos">Centros Educativos</string>
+    <string name="otros">Otros lugares</string>
+    <string name="talleres">Talleres</string>
+    <string name="guardar">Guardar</string>
+    <string name="subir">Subir todo a la web</string>
+
+
+
+</resources>

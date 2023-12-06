@@ -1,0 +1,37 @@
+package com.mmujer.jornada
+
+    public var Provincias = listOf(
+        Provincia(1, "DISTRITO NACIONAL", 1, "D"),
+        Provincia(2, "LA ALTAGRACIA", 28, "E"),
+        Provincia(3, "AZUA", 10, "S"),
+        Provincia(4, "BAHORUCO", 22, "S"),
+        Provincia(5, "BARAHONA", 18, "S"),
+        Provincia(6, "DAJABON", 44, "N"),
+        Provincia(7, "DUARTE", 56, "N"),
+        Provincia(8, "EL SEIBO", 25, "E"),
+        Provincia(9, "ELIAS PIÑA", 16, "S"),
+        Provincia(10, "ESPAILLAT", 54, "N"),
+        Provincia(11, "HATO MAYOR", 27, "E"),
+        Provincia(12, "INDEPENDENCIA", 77, "S"),
+        Provincia(13, "LA ROMANA", 26, "E"),
+        Provincia(14, "LA VEGA", 47, "N"),
+        Provincia(15, "MARIA TRINIDAD SANCHEZ", 71, "N"),
+        Provincia(16, "MONSEÑOR NOUEL", 48, "N"),
+        Provincia(17, "MONTE CRISTI", 41, "N"),
+        Provincia(18, "MONTE PLATA", 8, "E"),
+        Provincia(19, "PEDERNALES", 69, "S"),
+        Provincia(20, "PERAVIA", 3, "S"),
+        Provincia(21, "PUERTO PLATA", 37, "N"),
+        Provincia(22, "HERMANAS MIRABAL", 55, "N"),
+        Provincia(23, "SAMANA", 65, "N"),
+        Provincia(24, "SAN CRISTOBAL", 2, "S"),
+        Provincia(25, "SAN JUAN", 12, "S"),
+        Provincia(26, "SAN PEDRO DE MACORIS", 23, "E"),
+        Provincia(27, "SANCHEZ RAMIREZ", 49, "N"),
+        Provincia(28, "SANTIAGO", 31, "N"),
+        Provincia(29, "SANTIAGO RODRIGUEZ", 46, "N"),
+        Provincia(30, "VALVERDE", 34, "N"),
+        Provincia(31, "SAN JOSE DE OCOA", 13, "S"),
+        Provincia(32, "SANTO DOMINGO", 223, "D")
+    )
+
