@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         val buttonFecha: ImageButton = findViewById(R.id.imageButtonFecha)
         val buttonGuardar: Button = findViewById(R.id.btn_guardar)
         val buttonSubir: Button = findViewById(R.id.btn_subir)
-        // Listas de Municipios y de provincias
+        // Lista de provincias
         var Provincias = listOf(
             Provincia(1, "DISTRITO NACIONAL", 1, "D"),
             Provincia(2, "LA ALTAGRACIA", 28, "E"),
@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
             Provincia(31, "SAN JOSE DE OCOA", 13, "S"),
             Provincia(32, "SANTO DOMINGO", 223, "D")
         )
+        // Lista de todos los municipios
         val municipios = listOf(
             Municipio(1, "DISTRITO NACIONAL", 1, 1),
             Municipio(2, "SAN CRISTOBAL", 24, 2),
@@ -490,7 +491,7 @@ class MainActivity : AppCompatActivity() {
             Municipio(399, "SANTIAGO OESTE-CIENFUEGOS (DM)", 28, 31)
         )
 
-        //
+        // Variable para que almacenen el id de la provincia y el municipio que seleccionen
         var provinciaId = 0
         var municipioId = 0
 
@@ -513,7 +514,7 @@ class MainActivity : AppCompatActivity() {
                 autoCompleteTextViewMunicipio.setAdapter(adapterItemMunicipio)
 
                 autoCompleteTextViewMunicipio.setOnItemClickListener(AdapterView.OnItemClickListener{ adapterView, view, i, l ->
-                    val item = municipios[i]
+                    val item = municipiosXProvincia[i]
                     Toast.makeText(this@MainActivity, "Item: ${item.Descripcion}", Toast.LENGTH_SHORT).show()
                     municipioId = item.ID
                 })
@@ -524,6 +525,7 @@ class MainActivity : AppCompatActivity() {
         buttonGuardar.setOnClickListener {
             if(validarCamposRequeridos(autoCompleteTextViewProvincia.text.toString()) && validarCamposRequeridos(autoCompleteTextViewMunicipio.text.toString()) && validarCamposRequeridos(autoCompleteTextViewDistrito.text.toString()) && validarCamposRequeridos(autoCompleteTextViewFecha.text.toString()) && validarCamposRequeridos(autoCompleteTextViewCoordinador.text.toString()) && validarCamposRequeridos(autoCompleteTextViewEditor.text.toString())) {
                 registrar(contexto, "db_jornada.txt", convertirEnCadena(provinciaId, municipioId, autoCompleteTextViewDistrito.text.toString(), autoCompleteTextViewSector.text.toString(), autoCompleteTextViewFecha.text.toString(), autoCompleteTextViewCoordinador.text.toString(), autoCompleteTextViewEditor.text.toString(), autoCompleteTextViewHogares.text.toString().toInt(), autoCompleteTextViewMujeresH.text.toString().toInt(), autoCompleteTextViewHombresH.text.toString().toInt(), autoCompleteTextViewComerciales.text.toString().toInt(), autoCompleteTextViewImpactadasC.text.toString().toInt(), autoCompleteTextViewEducativos.text.toString().toInt(), autoCompleteTextViewImpactadasE.text.toString().toInt(), autoCompleteTextViewOtros.text.toString().toInt(), autoCompleteTextViewImpactadasO.text.toString().toInt(), autoCompleteTextViewTalleres.text.toString().toInt(), autoCompleteTextViewMujeresT.text.toString().toInt(), autoCompleteTextViewHombresT.text.toString().toInt(), 0))
+                registrar(contexto, "backup_jornada.txt", convertirEnCadena(provinciaId, municipioId, autoCompleteTextViewDistrito.text.toString(), autoCompleteTextViewSector.text.toString(), autoCompleteTextViewFecha.text.toString(), autoCompleteTextViewCoordinador.text.toString(), autoCompleteTextViewEditor.text.toString(), autoCompleteTextViewHogares.text.toString().toInt(), autoCompleteTextViewMujeresH.text.toString().toInt(), autoCompleteTextViewHombresH.text.toString().toInt(), autoCompleteTextViewComerciales.text.toString().toInt(), autoCompleteTextViewImpactadasC.text.toString().toInt(), autoCompleteTextViewEducativos.text.toString().toInt(), autoCompleteTextViewImpactadasE.text.toString().toInt(), autoCompleteTextViewOtros.text.toString().toInt(), autoCompleteTextViewImpactadasO.text.toString().toInt(), autoCompleteTextViewTalleres.text.toString().toInt(), autoCompleteTextViewMujeresT.text.toString().toInt(), autoCompleteTextViewHombresT.text.toString().toInt(), 0))
                 limpiarCampos(autoCompleteTextViewProvincia, autoCompleteTextViewMunicipio, autoCompleteTextViewDistrito, autoCompleteTextViewSector, autoCompleteTextViewFecha, autoCompleteTextViewCoordinador, autoCompleteTextViewEditor, autoCompleteTextViewHogares, autoCompleteTextViewMujeresH, autoCompleteTextViewHombresH, autoCompleteTextViewComerciales, autoCompleteTextViewImpactadasC, autoCompleteTextViewEducativos, autoCompleteTextViewImpactadasE, autoCompleteTextViewOtros, autoCompleteTextViewImpactadasO, autoCompleteTextViewTalleres, autoCompleteTextViewMujeresT, autoCompleteTextViewHombresT)
 
             } else {
@@ -533,7 +535,6 @@ class MainActivity : AppCompatActivity() {
         buttonSubir.setOnClickListener {
             subirRegistros("data/data/com.mmujer.jornada/files/db_jornada.txt")
         }
-
         buttonFecha.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -619,7 +620,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun registrar(contexto: Context, nombreArchivo: String, cadena: String){
-        val archivo = File("data/data/com.mmujer.jornada/files/db_jornada.txt")
+        val archivo = File("data/data/com.mmujer.jornada/files/$nombreArchivo")
         if(!archivo.exists()) {
             escribirArchivoTexto(contexto, nombreArchivo, cadena)
             Toast.makeText(this@MainActivity, "Registro exitoso!", Toast.LENGTH_SHORT).show()
@@ -629,10 +630,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "Registro exitoso!", Toast.LENGTH_SHORT).show()
         }
     }
-    /*fun isFileEmpty(context: Context, fileName: String): Boolean {
-        val file = File(context.filesDir, fileName)
-        return file.length() == 0L
-    }*/
     fun leerLineas(rutaArchivo: String): List<String> {
         val lineas = mutableListOf<String>()
         try {
